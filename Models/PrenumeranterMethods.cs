@@ -15,7 +15,7 @@ namespace WepApiPrenumeranter.Models
 
 
 
-        public PrenumerantDetails? GetPrenumerant(int prennr, out string errormsg)
+        public PrenumerantDetails? GetPrenumerant(int preNr, out string errormsg)
         {
             errormsg = string.Empty;
             try
@@ -26,19 +26,19 @@ namespace WepApiPrenumeranter.Models
                     string sql = "SELECT * FROM tbl_prenumeranter WHERE pr_prennr = @Prennr";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@Prennr", prennr);
+                        command.Parameters.AddWithValue("@Prennr", preNr);
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             if (reader.Read())
                             {
                                 return new PrenumerantDetails
                                 {
-                                    Prennr = reader.GetInt32(0),
-                                    Namn = reader.GetString(1),
-                                    Telenr = reader.GetString(2),
-                                    Utadress = reader.GetString(3),
-                                    Postnr = reader.GetString(4),
-                                    Ort = reader.GetString(5)
+                                    pr_preNr = reader.GetInt32(0),
+                                    pr_namn = reader.GetString(1),
+                                    pr_teleNr = reader.GetString(2),
+                                    pr_utAdress = reader.GetString(3),
+                                    pr_postNr = reader.GetString(4),
+                                    pr_ort = reader.GetString(5)
                                 };
                             }
                             else
@@ -68,12 +68,12 @@ namespace WepApiPrenumeranter.Models
                     string sql = "UPDATE tbl_prenumeranter SET pr_namn = @Namn, pr_telenr = @Telenr, pr_utadress = @Utadress, pr_postnr = @Postnr, pr_ort = @Ort WHERE pr_prennr = @Prennr";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@Namn", prenumerant.Namn);
-                        command.Parameters.AddWithValue("@Telenr", prenumerant.Telenr);
-                        command.Parameters.AddWithValue("@Utadress", prenumerant.Utadress);
-                        command.Parameters.AddWithValue("@Postnr", prenumerant.Postnr);
-                        command.Parameters.AddWithValue("@Ort", prenumerant.Ort);
-                        command.Parameters.AddWithValue("@Prennr", prenumerant.Prennr);
+                        command.Parameters.AddWithValue("@Namn", prenumerant.pr_namn);
+                        command.Parameters.AddWithValue("@Telenr", prenumerant.pr_teleNr);
+                        command.Parameters.AddWithValue("@Utadress", prenumerant.pr_utAdress);
+                        command.Parameters.AddWithValue("@Postnr", prenumerant.pr_postNr);
+                        command.Parameters.AddWithValue("@Ort", prenumerant.pr_ort);
+                        command.Parameters.AddWithValue("@Prennr", prenumerant.pr_preNr);
 
                         int rowsAffected = command.ExecuteNonQuery();
                         if (rowsAffected == 0)
