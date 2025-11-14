@@ -13,7 +13,7 @@ namespace WepApiPrenumeranter.Controllers
         {
             prenumeranterMethods = new PrenumeranterMethods(configuration);
         }
-
+        //Halloj
         [HttpGet("prenumerant/{prennr}", Name = "GetPrenumerant")]
         public IActionResult GetPrenumerant(int prennr)
         {
