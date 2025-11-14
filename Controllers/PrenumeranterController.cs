@@ -13,11 +13,11 @@ namespace WepApiPrenumeranter.Controllers
         {
             prenumeranterMethods = new PrenumeranterMethods(configuration);
         }
-        //Halloj
-        [HttpGet("prenumerant/{prennr}", Name = "GetPrenumerant")]
-        public IActionResult GetPrenumerant(int prennr)
+       
+        [HttpGet("prenumerant/{preNr}", Name = "GetPrenumerant")]
+        public IActionResult GetPrenumerant(int preNr)
         {
-            var prenumerant = prenumeranterMethods.GetPrenumerant(prennr, out string errormsg);
+            var prenumerant = prenumeranterMethods.GetPrenumerant(preNr, out string errormsg);
 
             if (prenumerant == null)
             {
@@ -31,10 +31,10 @@ namespace WepApiPrenumeranter.Controllers
             return Ok(prenumerant);
         }
 
-        [HttpPut("prenumerant/{prennr}", Name = "EditPrenumerant")]
-        public IActionResult EditPrenumerant(int prennr, Prenumeranter prenumerant)
+        [HttpPut("prenumerant/{preNr}", Name = "EditPrenumerant")]
+        public IActionResult EditPrenumerant(int preNr, PrenumeranterDetails prenumerant)
         {
-            if (prennr != prenumerant.Prennr)
+            if (preNr != prenumerant.pr_preNr)
             {
                 return BadRequest("Prennr in URL does not match Prennr in body.");
             }
