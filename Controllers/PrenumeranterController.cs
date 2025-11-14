@@ -32,7 +32,7 @@ namespace WepApiPrenumeranter.Controllers
         }
 
         [HttpPut("prenumerant/{preNr}", Name = "EditPrenumerant")]
-        public IActionResult EditPrenumerant(int preNr, PrenumeranterDetails prenumerant)
+        public IActionResult EditPrenumerant(int preNr, PrenumerantDetails prenumerant)
         {
             if (preNr != prenumerant.pr_preNr)
             {

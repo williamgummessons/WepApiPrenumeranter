@@ -15,7 +15,7 @@ namespace WepApiPrenumeranter.Models
 
 
 
-        public PrenumeranterDetails? GetPrenumerant(int prennr, out string errormsg)
+        public PrenumerantDetails? GetPrenumerant(int prennr, out string errormsg)
         {
             errormsg = string.Empty;
             try
@@ -31,7 +31,7 @@ namespace WepApiPrenumeranter.Models
                         {
                             if (reader.Read())
                             {
-                                return new PrenumeranterDetails
+                                return new PrenumerantDetails
                                 {
                                     Prennr = reader.GetInt32(0),
                                     Namn = reader.GetString(1),
@@ -57,7 +57,7 @@ namespace WepApiPrenumeranter.Models
             }
         }
 
-        public PrenumeranterDetails? EditPrenumerant(PrenumeranterDetails prenumerant, out string errormsg)
+        public PrenumerantDetails? EditPrenumerant(PrenumerantDetails prenumerant, out string errormsg)
         {
             errormsg = string.Empty;
             try

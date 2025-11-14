@@ -1,6 +1,6 @@
 ﻿namespace WepApiPrenumeranter.Models
 {
-    public class PrenumeranterDetails
+    public class PrenumerantDetails
     {
         public int pr_preNr { get; set; }
         public string pr_namn { get; set; }
